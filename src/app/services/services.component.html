@@ -1,0 +1,21 @@
+<section class="mt-5">
+    <div class="container py-5">
+        <div class="row py-5 g-3">
+            <div *ngIf="servicesList.length === 0">
+                <p class="text-danger">No services available at the moment  </p>
+            </div>
+            <div *ngFor="let service of servicesList; let i = index" [attr.id]="service._id">
+                <div [ngStyle]="{'min-height': isLogin ? '14rem' : '12rem', justifyContent: isLogin ? 'space-between' : 'center'}"
+                    class="service text-sm-start text-center p-4 rounded-3 bg-secondary-subtle d-flex flex-column">
+                    <div>
+                        <h3 class="my-2 text-success fw-bold">{{service.title}}</h3>
+                        <p class="pe-sm-5">{{service.description}}</p>
+                    </div>
+                    <div *ngIf="isLogin">
+                        <button class="btn btn-danger" (click)="deleteService(service._id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

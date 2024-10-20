@@ -1,0 +1,11 @@
+.bg-secondary {
+    background-color: #343a40 !important; /* لون الخلفية الرمادية */
+}
+
+.text-info {
+    color: #17a2b8 !important; /* لون النص الأزرق */
+}
+
+.message-textarea {
+    height: 150px; /* ارتفاع textarea */
+}

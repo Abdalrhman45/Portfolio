@@ -1,0 +1,5 @@
+/* component.css */
+:host {
+    background-color: rgba(59, 83, 61, 1);
+    color: #fff; /* Optional */
+}

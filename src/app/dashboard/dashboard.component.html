@@ -1,0 +1,199 @@
+<section class="py-5">
+    <div class="container pt-5">
+        <div class="row py-5 g-5 justify-content-center">
+            <div>
+                <ul class="list-unstyled d-flex gap-4 justify-content-center dashLinks">
+                    <li> <a (click)="activateLink($event)" class="dash-link text-white text-decoration-none activeLink">Home</a></li>
+                    <li> <a (click)="activateLink($event)" class="dash-link text-white text-decoration-none ">About</a></li>
+                    <li> <a (click)="activateLink($event)" class="dash-link text-white text-decoration-none ">Services</a></li>
+                    <li> <a (click)="activateLink($event)" class="dash-link text-white text-decoration-none ">Education</a></li>
+                    <li> <a (click)="activateLink($event)" class="dash-link text-white text-decoration-none ">Experience</a></li>
+                </ul>
+            </div>
+            <div class="col-md-8 text-white">
+                <div class="dashForm">
+                    <form [formGroup]="homeForm" *ngIf="formNumber == 0" (ngSubmit)="addToHome()">
+                        <div class="mb-3">
+                            <label class="form-label ">Name</label>
+                            <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
+                            <span class="text-danger" *ngIf="(homeForm.get('name')?.errors?.['minlength'] || homeForm.get('name')?.errors?.['maxlength'] || homeForm.get('name')?.errors?.['pattern']) && homeForm.get('name')?.touched">
+                                Name must be between 3 and 30 alphabatic characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Job title</label>
+                            <input type="text" class="form-control" formControlName="title" placeholder="Enter your job title" title="Job title">
+                            <span class="text-danger" *ngIf="(homeForm.get('title')?.errors?.['minlength'] || homeForm.get('title')?.errors?.['maxlength'] || homeForm.get('title')?.errors?.['pattern']) && homeForm.get('title')?.touched">
+                                Title must be between 3 and 30 alphabatic characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" >Background Image</label>
+                            <input type="file" class="form-control" (change)="fileChange($event, homeForm)" title="Upload your background image" placeholder="Choose a file">
+                        </div>
+                        <button type="submit" [disabled]="homeForm.invalid" class="btn btn-outline-info" >Add data</button>
+                    </form>
+
+                    <form [formGroup]="aboutForm" *ngIf="formNumber == 1" (ngSubmit)="addToAbout()">
+                        <div class="mb-3">
+                            <label class="form-label ">Description</label>
+                            <input type="text" class="form-control" formControlName="description" title="Enter a description" placeholder="Enter description">
+                            <span class="text-danger" *ngIf="(aboutForm.get('description')?.errors?.['minlength'] || aboutForm.get('description')?.errors?.['maxlength'] ) && aboutForm.get('description')?.touched">
+                                Description must be between 3 and 300 characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">CV link</label>
+                            <input type="text" class="form-control" formControlName="cv" title="Enter your CV link" placeholder="Enter your CV link">
+                            <span class="text-danger" *ngIf="aboutForm.get('cv')?.errors?.['pattern'] && aboutForm.get('cv')?.touched">
+                                CV link must be a valid URL
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" >About Image</label>
+                            <input type="file" class="form-control" (change)="fileChange($event, aboutForm)" title="Upload your about image" placeholder="Choose a file">
+                        </div>
+                        <button type="submit" [disabled]="aboutForm.invalid" class="btn btn-outline-info" >Add data</button>
+                    </form>
+                    
+                    <form [formGroup]="seviceForm" *ngIf="formNumber == 2" (ngSubmit)="addService()">
+                        <div class="mb-3">
+                            <label class="form-label ">Title</label>
+                            <input type="text" class="form-control" formControlName="title" title="Enter the title" placeholder="Enter title">
+                            <span class="text-danger" *ngIf="seviceForm.get('title')?.errors?.['required'] && seviceForm.get('title')?.touched">
+                                Title is required
+                            </span>
+                            <span class="text-danger" *ngIf="(seviceForm.get('title')?.errors?.['pattern'] || seviceForm.get('title')?.errors?.['minlength'] || seviceForm.get('title')?.errors?.['maxlength']) && seviceForm.get('title')?.touched">
+                                Title must be between 3 and 30 alphabatic characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Description</label>
+                            <input type="text" class="form-control" formControlName="description" title="Enter a description" placeholder="Enter description">
+                            <span class="text-danger" *ngIf="(seviceForm.get('description')?.errors?.['required'] ) && seviceForm.get('description')?.touched">
+                                Description is required
+                            </span>
+                            <span class="text-danger" *ngIf="(seviceForm.get('description')?.errors?.['minlength'] || seviceForm.get('description')?.errors?.['maxlength'] ) && seviceForm.get('description')?.touched">
+                                Description must be between 3 and 150 characters
+                            </span>
+                        </div>
+                        <button type="submit" [disabled]="seviceForm.invalid" class="btn btn-outline-info" >Add Service</button>
+                    </form>
+
+                    <form [formGroup]="educationForm" *ngIf="formNumber == 3" (ngSubmit)="addEducation()">
+                        <div class="mb-3">
+                            <label class="form-label ">School</label>
+                            <input type="text" class="form-control" formControlName="school" title="Enter the school name" placeholder="Enter school name">
+                            <span class="text-danger" *ngIf="educationForm.get('school')?.errors?.['required'] && educationForm.get('school')?.touched">
+                                School is required
+                            </span>
+                            <span class="text-danger" *ngIf="(educationForm.get('school')?.errors?.['pattern'] || educationForm.get('school')?.errors?.['minlength'] || educationForm.get('school')?.errors?.['maxlength']) && educationForm.get('school')?.touched">
+                                School must be between 3 and 30 alphabatic characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Title</label>
+                            <input type="text" class="form-control" formControlName="title" title="Enter the title" placeholder="Enter title">
+                            <span class="text-danger" *ngIf="educationForm.get('title')?.errors?.['required'] && educationForm.get('title')?.touched">
+                                Title is required
+                            </span>
+                            <span class="text-danger" *ngIf="(educationForm.get('title')?.errors?.['pattern'] || educationForm.get('title')?.errors?.['minlength'] || educationForm.get('title')?.errors?.['maxlength']) && educationForm.get('title')?.touched">
+                                Title must be between 3 and 30 alphabatic characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Start Date</label>
+                            <div class="d-flex">
+                                <input type="number" class="form-control me-2" formControlName="startYear" placeholder="YYYY" min="1900" max="2100">
+                                <input type="number" class="form-control" formControlName="startMonth" placeholder="MM" min="1" max="12">
+                            </div>
+                            <span class="text-danger" *ngIf="(educationForm.get('startYear')?.errors?.['required'] || educationForm.get('startMonth')?.errors?.['required']) && (educationForm.get('startYear')?.touched || educationForm.get('startMonth')?.touched)">
+                                Start Date is required
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">End Date</label>
+                            <div class="d-flex">
+                                <input type="number" class="form-control me-2" formControlName="endYear" placeholder="YYYY" min="1900" max="2100">
+                                <input type="number" class="form-control" formControlName="endMonth" placeholder="MM" min="1" max="12">
+                            </div>
+                            <span class="text-danger" *ngIf="(educationForm.get('endYear')?.errors?.['required'] || educationForm.get('endMonth')?.errors?.['required']) && (educationForm.get('endYear')?.touched || educationForm.get('endMonth')?.touched)">
+                                End Date is required
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Description</label>
+                            <input type="text" class="form-control" formControlName="description" title="Enter a description" placeholder="Enter description">
+                            <span class="text-danger" *ngIf="(educationForm.get('description')?.errors?.['required'] ) && educationForm.get('description')?.touched">
+                                Description is required
+                            </span>
+                            <span class="text-danger" *ngIf="(educationForm.get('description')?.errors?.['minlength'] || educationForm.get('description')?.errors?.['maxlength'] ) && educationForm.get('description')?.touched">
+                                Description must be between 3 and 150 characters
+                            </span>
+                        </div>
+                        <button type="submit" [disabled]="educationForm.invalid" class="btn btn-outline-info" >Add Education</button>
+                    </form>
+
+                    <form [formGroup]="experienceForm" *ngIf="formNumber == 4" (ngSubmit)="addExperience()">
+                        <div class="mb-3">
+                            <label class="form-label ">Company</label>
+                            <input type="text" class="form-control" formControlName="company" title="Enter the company name" placeholder="Enter company name">
+                            <span class="text-danger" *ngIf="experienceForm.get('company')?.errors?.['required'] && experienceForm.get('company')?.touched">
+                                Company is required
+                            </span>
+                            <span class="text-danger" *ngIf="(experienceForm.get('company')?.errors?.['pattern'] || experienceForm.get('company')?.errors?.['minlength'] || experienceForm.get('company')?.errors?.['maxlength']) && experienceForm.get('company')?.touched">
+                                Company must be between 3 and 30 alphabatic characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Title</label>
+                            <input type="text" class="form-control" formControlName="title" title="Enter the title" placeholder="Enter title">
+                            <span class="text-danger" *ngIf="experienceForm.get('title')?.errors?.['required'] && experienceForm.get('title')?.touched">
+                                Title is required
+                            </span>
+                            <span class="text-danger" *ngIf="(experienceForm.get('title')?.errors?.['pattern'] || experienceForm.get('title')?.errors?.['minlength'] || experienceForm.get('title')?.errors?.['maxlength']) && experienceForm.get('title')?.touched">
+                                Title must be between 3 and 30 alphabatic characters
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Start Date</label>
+                            <div class="d-flex">
+                                <input type="number" class="form-control me-2" formControlName="startYear" placeholder="YYYY" min="1900" max="2100" title="Enter start year">
+                                <input type="number" class="form-control" formControlName="startMonth" placeholder="MM" min="1" max="12" title="Enter start month">
+                            </div>
+                            <span class="text-danger" *ngIf="(experienceForm.get('startYear')?.errors?.['required'] || experienceForm.get('startMonth')?.errors?.['required']) && (experienceForm.get('startYear')?.touched || experienceForm.get('startMonth')?.touched)">
+                                Start Date is required
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">End Date</label>
+                            <div class="d-flex">
+                                <input type="number" class="form-control me-2" formControlName="endYear" placeholder="YYYY" min="1900" max="2100" title="Enter end year">
+                                <input type="number" class="form-control" formControlName="endMonth" placeholder="MM" min="1" max="12" title="Enter end month">
+                            </div>
+                            <span class="text-danger" *ngIf="(experienceForm.get('endYear')?.errors?.['required'] || experienceForm.get('endMonth')?.errors?.['required']) && (experienceForm.get('endYear')?.touched || experienceForm.get('endMonth')?.touched)">
+                                End Date is required
+                            </span>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" id="presentCheckbox" (change)="togglePresent(experienceForm)" formControlName="checkbox">
+                                <label class="form-check-label" for="presentCheckbox">Present</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label ">Description</label>
+                            <input type="text" class="form-control" formControlName="description" title="Enter a description" placeholder="Enter description">
+                            <span class="text-danger" *ngIf="(experienceForm.get('description')?.errors?.['required'] ) && experienceForm.get('description')?.touched">
+                                Description is required
+                            </span>
+                            <span class="text-danger" *ngIf="(experienceForm.get('description')?.errors?.['minlength'] || experienceForm.get('description')?.errors?.['maxlength'] ) && experienceForm.get('description')?.touched">
+                                Description must be between 3 and 150 characters
+                            </span>
+                        </div>
+                        <button type="submit" [disabled]="experienceForm.invalid" class="btn btn-outline-info" >Add Experience</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

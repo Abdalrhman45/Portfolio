@@ -1,0 +1,74 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #013636;
+}
+
+.activeLink{
+    color: #78B7D0 !important;
+}
+
+.navbar.scrolled {
+    background-color: rgb(3, 75, 58) !important;
+    transition: background-color 0.3s ease;
+}
+
+.navbar {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease;
+}
+
+
+.nav-link.activeLink::after, .dash-link.activeLink::after{
+    width: 100%;
+}
+
+.nav-link::after, .dash-link::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #78B7D0;
+    transition: width .3s;
+}
+
+
+.big-text{
+    font-size: 4rem;
+}
+
+.section-title{
+    color: white;
+    font-size: 3rem;
+    transition: all 0.2s;
+}
+
+.section-title:hover{
+    color: #78B7D0;
+}
+
+.dash-link{
+    cursor: pointer;
+    
+}
+
+.logout{
+    cursor: pointer;
+}
+
+
+
+
+
+@media screen and (max-width: 992px){
+    .navbar{
+        background-color: rgba(0,0,0,0.8) !important;
+    }
+}

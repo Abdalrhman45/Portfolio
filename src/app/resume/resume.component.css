@@ -1,0 +1,43 @@
+.education, .experience {
+    padding: 50px 20px; /* إضافة حشوة كافية */
+    background-color: #f8f9fa; /* لون خلفية فاتح */
+    border-radius: 10px; /* زوايا مدورة */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    margin: 20px 0; /* مسافة بين الأقسام */
+}
+
+.section-title {
+    font-size: 2rem; /* حجم عنوان كبير */
+    color: #343a40; /* لون داكن */
+    margin-bottom: 30px; /* مسافة تحت العنوان */
+    text-transform: uppercase; /* تحويل النص إلى أحرف كبيرة */
+    letter-spacing: 1px; /* إضافة مسافة بين الأحرف */
+}
+
+.education-item, .experience-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثيرات عند التحويم */
+    border-radius: 8px; /* زوايا مدورة */
+    background-color: #ffffff; /* خلفية بيضاء */
+    padding: 20px; /* حشوة داخلية */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
+
+.education-item:hover, .experience-item:hover {
+    transform: translateY(-5px); /* تأثير رفع عند التحويم */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* ظل أقوى عند التحويم */
+}
+
+.history {
+    display: flex; /* استخدام تخطيط مرن */
+    align-items: center; /* محاذاة العناصر في الوسط */
+    margin-bottom: 10px; /* إضافة مسافة أسفل */
+}
+
+.fa-icon {
+    color: #007bff; /* لون رموز الفا */
+    margin-right: 10px; /* مسافة إلى اليمين */
+}
+
+.text-primary {
+    color: #007bff; /* لون نص رئيسي */
+}

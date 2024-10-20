@@ -1,0 +1,13 @@
+<section [ngStyle]="{
+    'background-image': 'linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.35)), url(' + backgroundImageUrl + ')',
+    'background-size': 'cover'
+}">
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center align-items-center vh-100 home">
+            <img src="assets/profile-photo.jpg" alt="Profile Photo" class="profile-photo" />
+            <h4 class="big-text">Hello, I'm Abdalrhman</h4>
+            <h1 class="big-text fw-bolder text-white">{{ name }}</h1>
+            <h3 class="text-white">{{ title }}</h3>
+        </div>
+    </div>
+</section>

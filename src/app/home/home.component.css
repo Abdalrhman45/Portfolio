@@ -1,0 +1,65 @@
+/* تعيين القاعدة لجميع العناصر */
+* {
+    box-sizing: border-box;
+}
+
+/* تعيين نمط الجسم */
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #013636; /* يمكنك تغييره إلى اللون المفضل لديك */
+}
+
+/* إعدادات قسم المنزل */
+.home {
+    text-align: center;
+    color: white; /* لون النص */
+}
+
+/* إعدادات النص الكبير */
+.big-text {
+    font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* تأثير الظل على النص */
+}
+
+/* إعدادات الخلفية */
+section {
+    position: relative;
+    height: 100vh; /* عرض القسم لملء الشاشة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* إعدادات الصورة */
+.profile-photo {
+    width: 150px; /* يمكنك تغيير العرض كما تشاء */
+    height: 150px; /* يمكنك تغيير الارتفاع كما تشاء */
+    border-radius: 50%; /* لجعل الصورة دائرية */
+    object-fit: cover; /* لضمان عدم تشويه الصورة */
+    border: 5px solid rgba(255, 255, 255, 0.6); /* إطار للصورة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* تأثير ظل للصورة */
+}
+
+/* إعدادات أزرار */
+.btn {
+    transition: background-color 0.3s, color 0.3s; /* تأثير الانتقال للأزرار */
+}
+
+.btn:hover {
+    background-color: rgba(120, 183, 208, 0.8); /* تغيير لون الخلفية عند التمرير */
+    color: #fff; /* تغيير لون النص عند التمرير */
+}
+
+/* إعدادات الهاتف المحمول */
+@media (max-width: 768px) {
+    .big-text {
+        font-size: 2.5rem; /* تغيير حجم النص على الشاشات الصغيرة */
+    }
+
+    .profile-photo {
+        width: 120px; /* تغيير حجم الصورة */
+        height: 120px; /* تغيير حجم الصورة */
+    }
+}

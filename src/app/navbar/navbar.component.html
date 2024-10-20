@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg fixed-top" [ngClass]="{'scrolled': isScrolled}">
+    <div class="container">
+        <button class="navbar-toggler ms-auto border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="text-white">
+                <fa-icon [icon]="faBars"></fa-icon>
+            </span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4 mx-3" routerLink="/home" routerLinkActive="activeLink">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4 mx-3" routerLink="/about" routerLinkActive="activeLink">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4 mx-3" routerLink="/services" routerLinkActive="activeLink">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4 mx-3" routerLink="/resume" routerLinkActive="activeLink">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4 mx-3" routerLink="/contact" routerLinkActive="activeLink">Contact</a>
+                </li>
+                <li class="nav-item" *ngIf="isLogin">
+                    <a class="nav-link text-white fs-4 mx-3" routerLink="/dashboard" routerLinkActive="activeLink">Dashboard</a>
+                </li>
+                <li class="nav-item" *ngIf="isLogin">
+                    <a class="nav-link text-danger fw-bold fs-4 mx-3 logout" (click)="logOut()">Logout</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>

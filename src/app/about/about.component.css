@@ -1,0 +1,9 @@
+.btn-info {
+    background-color: #007bff; /* اللون الأزرق العادي */
+    color: #fff; /* لون النص الأبيض */
+}
+
+.btn-light {
+    background-color: #f8f9fa; /* لون خلفية فاتح */
+    color: #000; /* لون النص الأسود */
+}
